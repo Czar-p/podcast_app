@@ -1,18 +1,18 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
   output: {
-    path: path.join(__dirname,'..', 'build'),
+    path: path.join(__dirname, '..', 'build'),
     filename: 'bundle.js',
   },
   devtool: 'inline-source-map',
   devServer: {
     static: './build',
-    hot:true
+    hot: true,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -30,12 +30,25 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
     }),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
   ],
-};
+}

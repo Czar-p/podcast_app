@@ -38,6 +38,8 @@
     "mini-css-extract-plugin": "^2.7.5",
     "prettier": "^2.8.7",
     "react-refresh": "^0.14.0",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.1",
     "style-loader": "^3.3.2",
     "terser-webpack-plugin": "^5.3.7",
     "typescript": "^5.0.2",

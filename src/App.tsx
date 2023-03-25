@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './styles.css'
+import './styles.scss'
 
 const App = () => {
   return <h1>Podcaster</h1>
