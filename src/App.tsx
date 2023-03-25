@@ -1,10 +1,9 @@
-import React from 'react';
-import './styles.css'
-const App = () =>{
+import React, { useState } from "react";
+import "./styles.css";
 
-    return(
-        <h1>Podcaster</h1>
-    )
-}
 
-export default App
+const App = () => {
+  return <h1>Podcaster</h1>;
+};
+
+export default App;
