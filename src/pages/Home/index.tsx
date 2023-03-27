@@ -1,28 +1,45 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { useAppSelector } from '../../store'
 import { useGetPodcastsQuery } from '../../store/podcasts'
 import { Card } from './elements'
 
 const Home = () => {
+  const [searchText, setSearchText] = useState<string>('')
   const lastUpdated = useAppSelector((state) => state?.system?.lastUpdated)
   const { data, loading } = useAppSelector((state) => state?.podcasts)
 
   useGetPodcastsQuery(undefined, {
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true,
+
     skip: lastUpdated !== null && Date.now() - lastUpdated < 24 * 60 * 60 * 1000,
   })
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setSearchText(event.target.value.trimStart().trimEnd())
+  }
+
+  const podcasts = useMemo(
+    () =>
+      data.filter(
+        (entry) =>
+          entry.artist.toLowerCase().includes(searchText.toLowerCase()) ||
+          entry.name.toLowerCase().includes(searchText.toLowerCase())
+      ),
+    [searchText, data]
+  )
   return (
     <div>
       <div className="header">
-        <h1>Podcaster {loading ? 'cargando' : ''}</h1>
+        <h1>Podcaster</h1>
       </div>
+      <input type="text" onChange={handleInputChange} />
       <div className="content">
         {loading || !data?.length ? (
           <h1>Loading...</h1>
         ) : (
           <>
-            {data.map((entry) => (
+            {podcasts.map((entry) => (
               <Card
                 key={entry.id}
                 artist={entry.artist}
