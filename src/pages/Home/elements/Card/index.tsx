@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
-
+import { useNavigate } from 'react-router-dom'
+import './styles.scss'
 interface ICardProps {
   src: string
   height: number
@@ -9,14 +10,14 @@ interface ICardProps {
 }
 const Card = memo((props: ICardProps) => {
   const { artist, name, src, height, id } = props
-  const onClick = () => console.log('Navigate To =>', id)
-  console.log('render')
+  const navigate = useNavigate()
+  const onClick = () => navigate(`/${id}`)
   return (
     <div className="card">
       <img className="card-image" onClick={onClick} {...{ src, height }}></img>
       <div className="card-content" onClick={onClick}>
-        <p className="name">{name.toLocaleUpperCase()}</p>
-        <p className="author">Author: {artist}</p>
+        <p className="title">{name.toLocaleUpperCase()}</p>
+        <p className="subtitle">Author: {artist}</p>
       </div>
     </div>
   )

@@ -1,14 +1,17 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home } from '../pages'
+import { Route, Routes } from 'react-router-dom'
+import { Home, Details } from '../pages'
+import { Layout } from '../theme'
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<Details />} />
+        <Route path="/:podcastId/:episodeId" element={<Details />} />
       </Routes>
-    </BrowserRouter>
+    </Layout>
   )
 }
 export default Router

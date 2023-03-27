@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import { useAppSelector } from '../../store'
 import { useGetPodcastsQuery } from '../../store/podcasts'
-import { Card } from './elements'
+import { Card, SearchBar } from './elements'
 
 const Home = () => {
   const [searchText, setSearchText] = useState<string>('')
@@ -30,10 +31,7 @@ const Home = () => {
   )
   return (
     <div>
-      <div className="header">
-        <h1>Podcaster</h1>
-      </div>
-      <input type="text" onChange={handleInputChange} />
+      <SearchBar length={podcasts.length} onChange={handleInputChange} />
       <div className="content">
         {loading || !data?.length ? (
           <h1>Loading...</h1>

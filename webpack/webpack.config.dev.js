@@ -13,6 +13,7 @@ module.exports = {
   devServer: {
     static: './build',
     hot: true,
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
