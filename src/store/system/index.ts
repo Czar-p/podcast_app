@@ -13,9 +13,9 @@ const systemSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addMatcher(getPodcasts.matchFulfilled, (state, action) => ({
-      lastUpdated: action.meta.fulfilledTimeStamp,
-    }))
+    builder.addMatcher(getPodcasts.matchFulfilled, (state, action) => {
+      state.lastUpdated = action.meta.fulfilledTimeStamp
+    })
   },
 })
 
