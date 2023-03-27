@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import './styles.scss'
+import React from 'react'
+import './index.scss'
+import Router from './router'
 
 const App = () => {
-  return <h1>Podcaster</h1>
+  return <Router></Router>
 }
 
 export default App
