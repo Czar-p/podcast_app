@@ -7,7 +7,6 @@ const loadingIndicatorMiddleware: Middleware =
   ({ dispatch }) =>
   (next) =>
   (action: AnyAction) => {
-    console.log(action)
     if (action.type.endsWith('/pending')) {
       dispatch(setLoading(true))
     } else if (action.type.endsWith('/fulfilled') || action.type.endsWith('/rejected')) {

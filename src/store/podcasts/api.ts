@@ -65,7 +65,6 @@ const podcastApi = createApi({
         const image = podcastInfo.artworkUrl600
         const id = podcastInfo.collectionId
         const episodeCount = podcastInfo.trackCount
-        console.log(podcastInfo)
         const xml = await fetch(proxyUrl + podcastInfo.feedUrl)
         const xmlData = await xml.text()
         const parsedData = parser.parse(xmlData, {
