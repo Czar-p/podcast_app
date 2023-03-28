@@ -11,9 +11,9 @@ const parser = new XMLParser({
 const generateId = (value: string) => {
   const hashValue = crypto.SHA256(value).toString()
 
-  const id = Buffer.from(hashValue, 'hex').toString('base64')
+  const id = Buffer.from(hashValue, 'hex').toString().replace(/[^\w]/g, '').toLowerCase()
 
-  return id
+  return id.substring(0, 8)
 }
 
 function formatSecondsToHours(seconds: number) {
@@ -64,6 +64,8 @@ const podcastApi = createApi({
         const author = podcastInfo.artistName
         const image = podcastInfo.artworkUrl600
         const id = podcastInfo.collectionId
+        const episodeCount = podcastInfo.trackCount
+        console.log(podcastInfo)
         const xml = await fetch(proxyUrl + podcastInfo.feedUrl)
         const xmlData = await xml.text()
         const parsedData = parser.parse(xmlData, {
@@ -71,7 +73,10 @@ const podcastApi = createApi({
         }).rss.channel
 
         const description = parsedData.description
-        const episodes = parsedData.item.reverse().map((ep: any) => {
+
+        const episodes: any = {}
+
+        parsedData.item.reverse().forEach((ep: any) => {
           const metadata = {
             title: ep?.title,
             publishDate: new Date(ep?.pubDate).toLocaleDateString('en-US', {
@@ -86,8 +91,8 @@ const podcastApi = createApi({
             audioUrl: ep.enclosure && ep.enclosure['@_url'],
             id: ep.guid['#text'],
           }
-          const episodeId = ep.guid['#text'] ?? generateId(JSON.stringify(metadata))
-          return { ...metadata, episodeId }
+          const episodeId = generateId(JSON.stringify(ep.guid['#text'] ?? metadata))
+          episodes[episodeId] = { ...metadata, episodeId }
         })
 
         const details: any = {
@@ -97,9 +102,8 @@ const podcastApi = createApi({
           description,
           image,
           episodes,
+          episodeCount,
         }
-
-        console.log(details)
         return details
       },
     }),

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, Details } from '../pages'
+import { Home, Details, EpisodePlayer, EpisodeList } from '../pages'
 import { Layout } from '../theme'
 
 const Router = () => {
@@ -8,8 +8,10 @@ const Router = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/podcast/:id" element={<Details />} />
-        <Route path="podcast/:podcastId/episode/:episodeId" element={<Details />} />
+        <Route path="/podcast" element={<Details />}>
+          <Route path=":id/episode/:episodeId" element={<EpisodePlayer />} />
+          <Route path=":id" element={<EpisodeList />} />
+        </Route>
       </Routes>
     </Layout>
   )

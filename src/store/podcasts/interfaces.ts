@@ -14,4 +14,7 @@ export interface IPodcastState {
   loading: boolean
   error: string | null
   data: IPodcast[]
+  podcastInfo: {
+    [key: string]: any
+  }
 }

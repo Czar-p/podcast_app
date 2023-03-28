@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getPodcasts } from './api'
+import { getPodcast, getPodcasts } from './api'
 import { IPodcastState } from './interfaces'
 
 const initialState: IPodcastState = {
   loading: false,
   error: null,
   data: [],
+  podcastInfo: {},
 }
 
 const podcastsSlice = createSlice({
@@ -25,6 +26,10 @@ const podcastsSlice = createSlice({
       .addMatcher(getPodcasts.matchRejected, (state, { error }) => {
         state.loading = false
         state.error = error.message as string
+      })
+      .addMatcher(getPodcast.matchFulfilled, (state, { payload }) => {
+        if (!state.podcastInfo) state.podcastInfo = {}
+        state.podcastInfo[payload.id] = payload
       })
   },
 })
