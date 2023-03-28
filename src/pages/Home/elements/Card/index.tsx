@@ -11,7 +11,7 @@ interface ICardProps {
 const Card = memo((props: ICardProps) => {
   const { artist, name, src, height, id } = props
   const navigate = useNavigate()
-  const onClick = () => navigate(`/${id}`)
+  const onClick = () => navigate(`/podcast/${id}`)
   return (
     <div className="card">
       <img className="card-image" onClick={onClick} {...{ src, height }}></img>
