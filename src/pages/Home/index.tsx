@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react'
-import { Outlet } from 'react-router-dom'
 import { useSkip } from '../../hooks'
 import { useAppSelector } from '../../store'
 import { useGetPodcastsQuery } from '../../store/podcasts'
@@ -29,7 +28,6 @@ const Home = () => {
     [searchText, data]
   )
 
-  console.log(podcasts[0])
   return (
     <div>
       <SearchBar length={podcasts.length} onChange={handleInputChange} />
