@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IPodcast } from '../interfaces'
+import { IPodcast, IPodcastInfo } from '../interfaces'
 import { getPodcastsTransform, getPodcastTransform } from './transforms'
 
 export const proxyUrl = 'https://api.allorigins.win/raw?url='
@@ -21,7 +21,7 @@ const podcastApi = createApi({
       keepUnusedDataFor: 0,
       transformResponse: getPodcastsTransform,
     }),
-    getPodcast: builder.query<any, string>({
+    getPodcast: builder.query<IPodcastInfo, string>({
       query: (id) => `/lookup?id=${id}&media=podcast`,
       keepUnusedDataFor: 0,
       transformResponse: getPodcastTransform,

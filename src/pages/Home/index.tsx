@@ -25,7 +25,7 @@ const Home = () => {
       data.filter(
         (entry) =>
           entry.artist.toLowerCase().includes(searchText.toLowerCase()) ||
-          entry.name.toLowerCase().includes(searchText.toLowerCase())
+          entry.title.toLowerCase().includes(searchText.toLowerCase())
       ),
     [searchText, data]
   )
@@ -42,7 +42,7 @@ const Home = () => {
                 key={entry.id}
                 artist={entry.artist}
                 id={entry.id}
-                name={entry.name}
+                title={entry.title}
                 src={entry.image.source}
                 {...entry.image.attributes}
               />

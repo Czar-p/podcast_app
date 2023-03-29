@@ -21,10 +21,9 @@ const EpisodeList = () => {
           <tbody>
             {Object.keys(episodes)
               .sort(
-                (a: any, b: any) =>
-                  new Date(episodes[b]?.publishDate).getTime() - new Date(episodes[a]?.publishDate).getTime()
+                (a, b) => new Date(episodes[b]?.publishDate).getTime() - new Date(episodes[a]?.publishDate).getTime()
               )
-              .map((key: any) => {
+              .map((key) => {
                 const { title, publishDate, duration, episodeId, audioUrl } = episodes[key]
                 return (
                   <tr key={key}>

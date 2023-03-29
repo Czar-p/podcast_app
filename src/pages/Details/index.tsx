@@ -11,7 +11,7 @@ const Details = () => {
   const lastUpdated = useAppSelector((state) => state?.system?.lastUpdated)
   const podcast = useAppSelector((state) => state.podcasts.podcastInfo[params.id as string]) ?? {}
   const { data = podcast, isLoading } = useGetPodcastQuery(params.id as string, {
-    skip: podcast?.id && lastUpdated !== null && Date.now() - lastUpdated < 24 * 60 * 60 * 1000,
+    skip: Boolean(podcast?.id) && lastUpdated !== null && Date.now() - lastUpdated < 24 * 60 * 60 * 1000,
   })
 
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ const Details = () => {
 
         <div className="podcast-name-section" onClick={handleBack}>
           <h4 className="podcast-title">{data?.title}</h4>
-          <p className="podcast-title">By: {data.author}</p>
+          <p className="podcast-title">By: {data.artist}</p>
         </div>
 
         <div className="podcast-description-section">

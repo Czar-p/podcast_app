@@ -1,10 +1,11 @@
 import { proxyUrl } from '.'
 import { formatSecondsToHours, generateId, parseXmlData } from '../../../utils'
+import { IEpisodes, IPodcast, IPodcastInfo } from '../interfaces'
 
-export const getPodcastsTransform = (data: any) => {
+export const getPodcastsTransform = (data: any): IPodcast[] => {
   return data?.feed?.entry.map((entry: any) => ({
     id: Number(entry.id.attributes['im:id']),
-    name: entry['im:name'].label,
+    title: entry['im:name'].label,
     image: {
       source: entry['im:image'][2].label,
       attributes: entry['im:image'][2].attributes,
@@ -13,10 +14,10 @@ export const getPodcastsTransform = (data: any) => {
   }))
 }
 
-export const getPodcastTransform = async (data: any) => {
+export const getPodcastTransform = async (data: any): Promise<IPodcastInfo> => {
   const podcastInfo = data?.results[0]
   const title = podcastInfo.collectionName
-  const author = podcastInfo.artistName
+  const artist = podcastInfo.artistName
   const image = podcastInfo.artworkUrl600
   const id = podcastInfo.collectionId
 
@@ -26,7 +27,7 @@ export const getPodcastTransform = async (data: any) => {
   const description = parsedData.description
   const episodeCount = parsedData.item.length
 
-  const episodes: any = {}
+  const episodes: IEpisodes = {}
   parsedData.item
     .sort((a: any, b: any) => new Date(b?.pubDate).getTime() - new Date(a?.pubDate).getTime())
     .forEach((ep: any) => {
@@ -42,16 +43,15 @@ export const getPodcastTransform = async (data: any) => {
           : ep['itunes:duration'],
         description: ep?.description,
         audioUrl: ep.enclosure && ep.enclosure['@_url'],
-        id: ep.guid['#text'],
       }
       const episodeId = generateId(JSON.stringify(ep.guid['#text'] ?? metadata))
       episodes[episodeId] = { ...metadata, episodeId }
     })
 
-  const details: any = {
+  const details: IPodcastInfo = {
     id,
     title,
-    author,
+    artist,
     description,
     image,
     episodes,

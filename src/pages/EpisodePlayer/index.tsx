@@ -13,7 +13,6 @@ const EpisodePlayer = () => {
           <h1>{episode.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: episode.description }}></div>
         </div>
-
         <audio className="audio-player" src={episode.audioUrl} controls />
       </div>
     </div>

@@ -4,19 +4,19 @@ import './styles.scss'
 interface ICardProps {
   src: string
   height: number
-  name: string
+  title: string
   artist: string
-  id: number
+  id: string
 }
 const Card = memo((props: ICardProps) => {
-  const { artist, name, src, height, id } = props
+  const { artist, title, src, height, id } = props
   const navigate = useNavigate()
   const onClick = () => navigate(`/podcast/${id}`)
   return (
     <div className="card">
       <img className="card-image" onClick={onClick} {...{ src, height }}></img>
       <div className="card-content" onClick={onClick}>
-        <p className="title">{name.toLocaleUpperCase()}</p>
+        <p className="title">{title.toLocaleUpperCase()}</p>
         <p className="subtitle">Author: {artist}</p>
       </div>
     </div>
