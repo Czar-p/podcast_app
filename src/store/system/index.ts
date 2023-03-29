@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getPodcasts } from '../podcasts'
-interface ISystem {
-  lastUpdated: EpochTimeStamp | null
-  loading: boolean
-}
+import { ISystem } from './interface'
 
 const initialState: ISystem = {
   lastUpdated: null,
