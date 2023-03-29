@@ -19,11 +19,12 @@ export const getPodcastTransform = async (data: any) => {
   const author = podcastInfo.artistName
   const image = podcastInfo.artworkUrl600
   const id = podcastInfo.collectionId
-  const episodeCount = podcastInfo.trackCount
+
   const xml = await fetch(proxyUrl + podcastInfo.feedUrl)
   const xmlData = await xml.text()
   const parsedData = parseXmlData(xmlData)
   const description = parsedData.description
+  const episodeCount = parsedData.item.length
 
   const episodes: any = {}
   parsedData.item
