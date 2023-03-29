@@ -18,18 +18,23 @@ const EpisodeList = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(episodes).map((key: any) => {
-              const { title, publishDate, duration, episodeId, audioUrl } = episodes[key]
-              return (
-                <tr key={key}>
-                  <td>
-                    {audioUrl && episodeId ? <Link to={`/podcast/${id}/episode/${episodeId}`}>{title}</Link> : title}
-                  </td>
-                  <td>{publishDate}</td>
-                  <td>{duration}</td>
-                </tr>
+            {Object.keys(episodes)
+              .sort(
+                (a: any, b: any) =>
+                  new Date(episodes[b]?.publishDate).getTime() - new Date(episodes[a]?.publishDate).getTime()
               )
-            })}
+              .map((key: any) => {
+                const { title, publishDate, duration, episodeId, audioUrl } = episodes[key]
+                return (
+                  <tr key={key}>
+                    <td>
+                      {audioUrl && episodeId ? <Link to={`/podcast/${id}/episode/${episodeId}`}>{title}</Link> : title}
+                    </td>
+                    <td>{publishDate}</td>
+                    <td>{duration}</td>
+                  </tr>
+                )
+              })}
           </tbody>
         </table>
       </div>

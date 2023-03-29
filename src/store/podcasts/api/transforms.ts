@@ -26,25 +26,26 @@ export const getPodcastTransform = async (data: any) => {
   const description = parsedData.description
 
   const episodes: any = {}
-
-  parsedData.item.reverse().forEach((ep: any) => {
-    const metadata = {
-      title: ep?.title,
-      publishDate: new Date(ep?.pubDate).toLocaleDateString('en-US', {
-        month: '2-digit',
-        day: '2-digit',
-        year: 'numeric',
-      }),
-      duration: Number.isInteger(ep['itunes:duration'])
-        ? formatSecondsToHours(ep['itunes:duration'])
-        : ep['itunes:duration'],
-      description: ep?.description,
-      audioUrl: ep.enclosure && ep.enclosure['@_url'],
-      id: ep.guid['#text'],
-    }
-    const episodeId = generateId(JSON.stringify(ep.guid['#text'] ?? metadata))
-    episodes[episodeId] = { ...metadata, episodeId }
-  })
+  parsedData.item
+    .sort((a: any, b: any) => new Date(b?.pubDate).getTime() - new Date(a?.pubDate).getTime())
+    .forEach((ep: any) => {
+      const metadata = {
+        title: ep?.title,
+        publishDate: new Date(ep?.pubDate).toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: 'numeric',
+        }),
+        duration: Number.isInteger(ep['itunes:duration'])
+          ? formatSecondsToHours(ep['itunes:duration'])
+          : ep['itunes:duration'],
+        description: ep?.description,
+        audioUrl: ep.enclosure && ep.enclosure['@_url'],
+        id: ep.guid['#text'],
+      }
+      const episodeId = generateId(JSON.stringify(ep.guid['#text'] ?? metadata))
+      episodes[episodeId] = { ...metadata, episodeId }
+    })
 
   const details: any = {
     id,
