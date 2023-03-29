@@ -8,6 +8,7 @@
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "build": "webpack --config webpack/webpack.config.prod.js",
+    "docker": "docker build -t podcast-app . && docker run -p 8080:8080 --rm --name podcast-app-container -d podcast-app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
