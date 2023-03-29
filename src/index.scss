@@ -8,3 +8,17 @@
   background-color: #e4e4e4;
   cursor: pointer;
 }
+%box {
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 1px #adadad;
+  padding: 1rem;
+}
+%separator {
+  border-top: 1px solid #ddd;
+  width: 18rem;
+  padding: 1rem;
+}
+%description {
+  word-wrap: break-word;
+  text-align: justify;
+}

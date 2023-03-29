@@ -8,12 +8,6 @@
   justify-content: space-evenly;
 }
 
-%separator {
-  border-top: 1px solid #ddd;
-  width: 18rem;
-  padding: 1rem;
-}
-
 .podcast-info {
   border-radius: 10px;
   position: relative;
@@ -38,18 +32,10 @@
 .podcast-name-section:hover {
   @extend %hover-share;
 }
-%description {
-  word-wrap: break-word;
-  text-align: justify;
-}
 
-.podcast-player-description {
-  @extend %description;
-}
 .podcast-description-section {
   @extend %separator;
   @extend %description;
-  /* para permitir que se rompa el texto incluso dentro de las palabras */
 }
 
 .podcast-title {
@@ -67,7 +53,6 @@
 
 .podcast-image-container {
   padding: 1.5rem;
-
   margin-top: 1rem;
 }
 
@@ -78,39 +63,6 @@
   width: 50rem;
   justify-content: flex-start;
   flex-direction: column;
-}
-
-.audio-player {
-  margin-top: 20px;
-  width: 100%;
-}
-
-.episodes-header {
-  border-radius: 10px;
-  height: 5rem;
-  box-shadow: 5px 5px 10px 1px #adadad;
-  padding-left: 1rem;
-}
-
-.episodes-list {
-  @extend %box;
-  margin-top: 5rem;
-  max-height: 20rem;
-  overflow-y: scroll;
-}
-.episodes-player {
-  @extend %box;
-  min-height: 20rem;
-  max-height: 120rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-%box {
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px 1px #adadad;
-  padding: 1rem;
 }
 
 .table {
@@ -139,22 +91,18 @@
   }
 }
 
-$table-border-color: #dee2e6;
-$table-background-color: #f0f0f0;
-$table-background-color-alt: #fff;
-
 .table {
   tbody + tbody {
-    border-top: 2px solid $table-border-color;
+    border-top: 2px solid #dee2e6;
   }
 
   tr {
     &:nth-child(even) {
-      background-color: $table-background-color;
+      background-color: #f0f0f0;
     }
 
     &:nth-child(odd) {
-      background-color: $table-background-color-alt;
+      background-color: #fff;
     }
   }
 }

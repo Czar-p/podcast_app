@@ -1,0 +1,18 @@
+@import '../../index.scss';
+.audio-player {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.episodes-player {
+  @extend %box;
+  min-height: 20rem;
+  max-height: 120rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.podcast-player-description {
+  @extend %description;
+}

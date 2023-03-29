@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useAppSelector } from '../../store'
+import './styles.scss'
 
 const EpisodeList = () => {
   const { id } = useParams()
