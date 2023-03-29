@@ -1,19 +1,18 @@
 import React, { useMemo, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import { useSkip } from '../../hooks'
 import { useAppSelector } from '../../store'
 import { useGetPodcastsQuery } from '../../store/podcasts'
 import { Card, SearchBar } from './elements'
 
 const Home = () => {
   const [searchText, setSearchText] = useState<string>('')
-  const lastUpdated = useAppSelector((state) => state?.system?.lastUpdated)
   const { data, loading } = useAppSelector((state) => state?.podcasts)
-
+  const skip = useSkip(data.length)
   useGetPodcastsQuery(undefined, {
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true,
-
-    skip: lastUpdated !== null && Date.now() - lastUpdated < 24 * 60 * 60 * 1000,
+    skip,
   })
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -29,13 +28,13 @@ const Home = () => {
       ),
     [searchText, data]
   )
+
+  console.log(podcasts[0])
   return (
     <div>
       <SearchBar length={podcasts.length} onChange={handleInputChange} />
       <div className="content">
-        {loading || !data?.length ? (
-          <h1>Loading...</h1>
-        ) : (
+        {loading || !data?.length ? null : (
           <>
             {podcasts.map((entry) => (
               <Card

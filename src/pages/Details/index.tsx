@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
+import { useSkip } from '../../hooks'
 import { useAppSelector } from '../../store'
 import { useGetPodcastQuery } from '../../store/podcasts'
 import './styles.scss'
@@ -8,10 +9,10 @@ const Details = () => {
   const params = useParams<{
     id: string
   }>()
-  const lastUpdated = useAppSelector((state) => state?.system?.lastUpdated)
   const podcast = useAppSelector((state) => state.podcasts.podcastInfo[params.id as string]) ?? {}
+  const skip = useSkip(podcast?.id)
   const { data = podcast, isLoading } = useGetPodcastQuery(params.id as string, {
-    skip: Boolean(podcast?.id) && lastUpdated !== null && Date.now() - lastUpdated < 24 * 60 * 60 * 1000,
+    skip,
   })
 
   const navigate = useNavigate()
