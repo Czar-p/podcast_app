@@ -1,10 +1,7 @@
 import React from 'react'
+import { ISearchBarProps } from './interface'
 import './styles.scss'
 
-interface ISearchBarProps {
-  length: number
-  onChange: React.ChangeEventHandler<HTMLInputElement>
-}
 const SearchBar = ({ length, onChange }: ISearchBarProps) => {
   return (
     <div className="search-box">

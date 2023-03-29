@@ -1,13 +1,8 @@
 import React, { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ICardProps } from './interface'
 import './styles.scss'
-interface ICardProps {
-  src: string
-  height: number
-  title: string
-  artist: string
-  id: string
-}
+
 const Card = memo((props: ICardProps) => {
   const { artist, title, src, height, id } = props
   const navigate = useNavigate()
