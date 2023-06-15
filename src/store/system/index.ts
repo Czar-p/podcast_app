@@ -1,4 +1,3 @@
-'use client'
 import { createSlice } from '@reduxjs/toolkit'
 import { getPodcasts } from '../podcasts'
 import { ISystem } from './interface'

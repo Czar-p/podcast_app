@@ -1,4 +1,3 @@
-'use client'
 import crypto from 'crypto-js'
 import { Buffer } from 'buffer'
 import { XMLParser } from 'fast-xml-parser'

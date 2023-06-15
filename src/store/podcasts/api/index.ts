@@ -1,4 +1,3 @@
-'use client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IPodcast, IPodcastInfo } from '../interfaces'
 import { getPodcastsTransform, getPodcastTransform } from './transforms'

@@ -1,4 +1,3 @@
-'use client'
 import { AnyAction } from 'redux'
 import { Middleware } from '@reduxjs/toolkit'
 import { podcastMiddleware } from './podcasts'

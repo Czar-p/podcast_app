@@ -1,4 +1,3 @@
-'use client'
 import { proxyUrl } from '.'
 import { formatSecondsToHours, generateId, parseXmlData } from '../../../utils'
 import { IEpisodes, IPodcast, IPodcastInfo } from '../interfaces'
