@@ -15,13 +15,11 @@ export const getPodcastsTransform = (data: any): IPodcast[] => {
 }
 
 export const getPodcastTransform = async (data: any): Promise<IPodcastInfo> => {
-  console.log(data?.results[0])
   const podcastInfo = data?.results[0]
   const title = podcastInfo.collectionName
   const artist = podcastInfo.artistName
   const image = podcastInfo.artworkUrl600
   const id = podcastInfo.collectionId
-
   const xml = await fetch(proxyUrl + podcastInfo.feedUrl)
   const xmlData = await xml.text()
   const parsedData = parseXmlData(xmlData)
@@ -58,5 +56,6 @@ export const getPodcastTransform = async (data: any): Promise<IPodcastInfo> => {
     episodes,
     episodeCount,
   }
+
   return details
 }
