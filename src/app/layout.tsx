@@ -1,16 +1,12 @@
-import { Header } from "@/components";
-import Provider from "@/store/provider";
+import { Header } from '@/components'
+import Provider from '@/store/provider'
 
 export const metadata = {
-  title: "Podcaster",
-  description: "Podcast App",
-};
+  title: 'Podcaster',
+  description: 'Podcast App',
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
@@ -20,5 +16,5 @@ export default function RootLayout({
         </Provider>
       </body>
     </html>
-  );
+  )
 }

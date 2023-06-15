@@ -1,2 +1,2 @@
-export * from "./system";
-export * from "./podcasts";
+export * from './system'
+export * from './podcasts'

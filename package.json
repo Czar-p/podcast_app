@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
     "@types/redux-persist": "^4.3.1",
+    "prettier": "^2.8.8",
     "sass": "^1.63.4"
   }
 }

@@ -1,6 +1,6 @@
 export interface ICardProps {
-  src: string;
-  title: string;
-  artist: string;
-  id: string;
+  src: string
+  title: string
+  artist: string
+  id: string
 }

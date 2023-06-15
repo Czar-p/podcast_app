@@ -1,2 +1,2 @@
-export * from "./api";
-export { default as podcasts } from "./slice";
+export * from './api'
+export { default as podcasts } from './slice'

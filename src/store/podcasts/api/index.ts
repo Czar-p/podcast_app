@@ -1,24 +1,24 @@
-"use client";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IPodcast, IPodcastInfo } from "../interfaces";
-import { getPodcastsTransform, getPodcastTransform } from "./transforms";
+'use client'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { IPodcast, IPodcastInfo } from '../interfaces'
+import { getPodcastsTransform, getPodcastTransform } from './transforms'
 
-export const proxyUrl = "https://api.allorigins.win/raw?url=";
+export const proxyUrl = 'https://api.allorigins.win/raw?url='
 
 const podcastApi = createApi({
-  reducerPath: "podcastsApi",
+  reducerPath: 'podcastsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: proxyUrl + "https://itunes.apple.com",
-    cache: "no-cache",
+    baseUrl: proxyUrl + 'https://itunes.apple.com',
+    cache: 'no-cache',
     prepareHeaders: (headers) => {
-      headers.set("x-requested-with", "XMLHttpRequest");
-      return headers;
+      headers.set('x-requested-with', 'XMLHttpRequest')
+      return headers
     },
   }),
   keepUnusedDataFor: 0,
   endpoints: (builder) => ({
     getPodcasts: builder.query<IPodcast[], void>({
-      query: () => "/us/rss/toppodcasts/limit=100/genre=1310/json",
+      query: () => '/us/rss/toppodcasts/limit=100/genre=1310/json',
       keepUnusedDataFor: 0,
       transformResponse: getPodcastsTransform,
     }),
@@ -28,7 +28,7 @@ const podcastApi = createApi({
       transformResponse: getPodcastTransform,
     }),
   }),
-});
+})
 
 export const {
   useGetPodcastQuery,
@@ -36,4 +36,4 @@ export const {
   reducer: podcastsApi,
   middleware: podcastMiddleware,
   endpoints: { getPodcasts, getPodcast },
-} = podcastApi;
+} = podcastApi
