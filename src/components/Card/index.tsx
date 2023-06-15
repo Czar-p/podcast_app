@@ -14,7 +14,7 @@ const Card = memo((props: ICardProps) => {
   const onClick = () => {
     dispatch(setCurrentPodcastId(id))
     router.push(`/podcast/${id}`)
-  } //navigate(`/podcast/${id}`)
+  }
   return (
     <div className={styles['card']}>
       <Image
