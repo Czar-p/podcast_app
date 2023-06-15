@@ -3,7 +3,6 @@ import { formatSecondsToHours, generateId, parseXmlData } from '../../../utils'
 import { IEpisodes, IPodcast, IPodcastInfo } from '../interfaces'
 
 export const getPodcastsTransform = (data: any): IPodcast[] => {
-  console.log(data?.feed?.entry[0], 'TESSST')
   return data?.feed?.entry.map((entry: any) => ({
     id: Number(entry.id.attributes['im:id']),
     title: entry['im:name'].label,
@@ -16,6 +15,7 @@ export const getPodcastsTransform = (data: any): IPodcast[] => {
 }
 
 export const getPodcastTransform = async (data: any): Promise<IPodcastInfo> => {
+  console.log(data?.results[0])
   const podcastInfo = data?.results[0]
   const title = podcastInfo.collectionName
   const artist = podcastInfo.artistName

@@ -16,7 +16,7 @@ const Card = memo((props: ICardProps) => {
     router.push(`/podcast/${id}`)
   }
   return (
-    <div className={styles['card']}>
+    <div data-testid="podcast-card" className={styles['card']}>
       <Image
         className={styles['card-image']}
         onClick={onClick}

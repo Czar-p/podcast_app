@@ -9,7 +9,7 @@ import styles from './styles.module.scss'
 function Home() {
   const [searchText, setSearchText] = useState<string>('')
   const { data, loading } = useAppSelector((state) => state?.podcasts)
-  const skip = useSkip(data.length)
+  const skip = useSkip(0)
   useGetPodcastsQuery(undefined, {
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true,
