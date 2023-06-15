@@ -16,18 +16,3 @@
 .podcast-player-description {
   @extend %description;
 }
-
-.episodes-header {
-  border-radius: 10px;
-  height: 5rem;
-  box-shadow: 5px 5px 10px 1px #adadad;
-  padding-left: 1rem;
-}
-.episodes-content {
-  display: flex;
-  position: relative;
-  min-height: 30rem;
-  width: 50rem;
-  justify-content: flex-start;
-  flex-direction: column;
-}

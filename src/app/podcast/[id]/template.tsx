@@ -41,7 +41,7 @@ const PodcastTemplate = ({ children, params }: { children: React.ReactNode; para
           <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
         </div>
       </div>
-      {children}
+      <div className={styles['episodes-content']}>{children}</div>
     </div>
   ) : null
 }

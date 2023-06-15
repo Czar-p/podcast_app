@@ -7,7 +7,7 @@ import Link from 'next/link'
 const PodcastDetails: NextPage<{ params: { id: string } }> = ({ params: { id } }) => {
   const { episodeCount, episodes = {} } = useAppSelector((state) => state.podcasts.podcastInfo[id])
   return (
-    <div className={styles['episodes-content']}>
+    <>
       <div className={styles['episodes-header']}>{<h1>Episodes: {episodeCount} </h1>}</div>
       <div className={styles['episodes-list']}>
         <table className={styles['table']}>
@@ -42,7 +42,7 @@ const PodcastDetails: NextPage<{ params: { id: string } }> = ({ params: { id } }
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   )
 }
 
