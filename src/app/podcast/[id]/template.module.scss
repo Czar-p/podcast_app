@@ -1,0 +1,57 @@
+@import "../../../index.scss";
+
+.details-content {
+  margin-top: 5rem;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.podcast-info {
+  border-radius: 10px;
+  position: relative;
+  min-height: 30rem;
+  width: 20rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 5px 5px 10px 1px #adadad;
+  align-items: center;
+}
+
+.podcast-name-section {
+  @extend %separator;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.podcast-name-section:hover {
+  @extend %hover-share;
+}
+
+.podcast-description-section {
+  @extend %separator;
+  @extend %description;
+}
+
+.podcast-title {
+  margin: 0px;
+}
+
+.podcast-image {
+  height: 15rem;
+  width: 15rem;
+}
+
+.podcast-image:hover {
+  @extend %hover-share;
+}
+
+.podcast-image-container {
+  padding: 1.5rem;
+  margin-top: 1rem;
+}

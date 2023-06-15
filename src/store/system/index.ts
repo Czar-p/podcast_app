@@ -1,14 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { getPodcasts } from '../podcasts'
-import { ISystem } from './interface'
+"use client";
+import { createSlice } from "@reduxjs/toolkit";
+import { getPodcasts } from "../podcasts";
+import { ISystem } from "./interface";
 
 const initialState: ISystem = {
   lastUpdated: null,
   loading: false,
-}
+};
 
 const systemSlice = createSlice({
-  name: 'system',
+  name: "system",
   initialState: initialState,
   reducers: {
     setLoading: (state, { payload }) => ({
@@ -18,11 +19,11 @@ const systemSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(getPodcasts.matchFulfilled, (state, action) => {
-      state.lastUpdated = action.meta.fulfilledTimeStamp
-    })
+      state.lastUpdated = action.meta.fulfilledTimeStamp;
+    });
   },
-})
+});
 export const {
   actions: { setLoading },
-} = systemSlice
-export default systemSlice.reducer
+} = systemSlice;
+export default systemSlice.reducer;

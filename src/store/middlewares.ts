@@ -1,20 +1,24 @@
-import { AnyAction } from 'redux'
-import { Middleware } from '@reduxjs/toolkit'
-import { podcastMiddleware } from './podcasts'
-import { setLoading } from './system'
+"use client";
+import { AnyAction } from "redux";
+import { Middleware } from "@reduxjs/toolkit";
+import { podcastMiddleware } from "./podcasts";
+import { setLoading } from "./system";
 
 const loadingIndicatorMiddleware: Middleware =
   ({ dispatch }) =>
   (next) =>
   (action: AnyAction) => {
-    if (action.type.endsWith('/pending')) {
-      dispatch(setLoading(true))
-    } else if (action.type.endsWith('/fulfilled') || action.type.endsWith('/rejected')) {
-      dispatch(setLoading(false))
+    if (action.type.endsWith("/pending")) {
+      dispatch(setLoading(true));
+    } else if (
+      action.type.endsWith("/fulfilled") ||
+      action.type.endsWith("/rejected")
+    ) {
+      dispatch(setLoading(false));
     }
-    return next(action)
-  }
+    return next(action);
+  };
 
-const middlewares = [podcastMiddleware, loadingIndicatorMiddleware]
+const middlewares = [podcastMiddleware, loadingIndicatorMiddleware];
 
-export default middlewares
+export default middlewares;
