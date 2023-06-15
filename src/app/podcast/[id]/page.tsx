@@ -29,7 +29,9 @@ const PodcastDetails: NextPage<{ params: { id: string } }> = ({ params: { id } }
                   <tr key={key}>
                     <td>
                       {audioUrl && episodeId ? (
-                        <Link href={`/podcast/${id}/episode/${episodeId}`}>{title}</Link>
+                        <Link title={title} href={`/podcast/${id}/episode/${episodeId}`}>
+                          {title}
+                        </Link>
                       ) : (
                         title
                       )}

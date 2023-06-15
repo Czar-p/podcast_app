@@ -6,7 +6,7 @@ const Header = () => {
   const loading = useAppSelector((state) => state.system.loading)
   return (
     <div className={styles['header']}>
-      <Link href="/" className={styles['header-title']}>
+      <Link title="home" href="/" className={styles['header-title']}>
         Podcaster
       </Link>
       {loading ? (
