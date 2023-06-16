@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Podcaster
+
+Welcome to Podcaster, a Next.js project for podcast management.
 
 ## Getting Started
 
-First, run the development server:
+### Development
 
-```bash
+To start the project in development mode, run the following commands:
+
+```shell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will install the dependencies and start the development server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To start the project in a production environment, follow these steps:
 
-## Learn More
+1. Build the Docker image:
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+docker build -t podcaster .
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Run the Docker container:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```shell
+docker run -d -p 3000:3000 podcaster
+```
 
-## Deploy on Vercel
+This will create and run the Docker container with the Podcaster application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Podcaster is built using the following technologies:
+
+- Next.js: A React framework for building server-side rendered applications.
+- Redux: A predictable state management library for JavaScript applications. It is used in this project to manage global application state.
+- crypto-js and Buffer: Utility libraries used for various functions in the project.
+- fast-xml-parser: A library used for parsing XML into JSON format.
+- Jest: A JavaScript testing framework used for unit and integration testing.
+
+## Testing
+
+To run the tests for Podcaster, execute the following command:
+
+```shell
+npm test
+```
+
+**Disclaimer:** Please note that only integration tests have been included in this project. Since the components are small and straightforward, the most relevant aspects can be observed in integration tests. Adding unit tests for such small components would not provide significant additional insights.
+
+---
+
+**Disclaimer:** This project is intended to showcase technical skills
