@@ -10,7 +10,7 @@ const PodcastTemplate = ({ children, params }: { children: React.ReactNode; para
   const podcast = useAppSelector((state) => state.podcasts.podcastInfo[podcastId as string]) ?? {}
   const skip = useSkip(podcast?.id)
   const { data = podcast, isLoading } = useGetPodcastQuery(podcastId as string, {
-    skip: false,
+    skip,
   })
 
   const router = useRouter()

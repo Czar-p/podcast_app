@@ -31,4 +31,5 @@ const Card = memo((props: ICardProps) => {
   )
 })
 
+Card.displayName = 'Card'
 export default Card
