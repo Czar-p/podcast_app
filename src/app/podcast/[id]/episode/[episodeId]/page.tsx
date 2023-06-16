@@ -10,9 +10,9 @@ const EpisodePlayer: NextPage<{
     <div className={styles['episodes-player']}>
       <div className={styles['podcast-player-description']}>
         <h1>{episode.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: episode.description }}></div>
+        <div data-testid="episode-description" dangerouslySetInnerHTML={{ __html: episode.description }}></div>
       </div>
-      <audio className={styles['audio-player']} src={episode.audioUrl} controls />
+      <audio data-testid="audio-player" className={styles['audio-player']} src={episode.audioUrl} controls />
     </div>
   )
 }

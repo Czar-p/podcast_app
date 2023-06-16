@@ -17,7 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import rootReducer from './reducer'
 import middlewares from './middlewares'
-import { createWrapper } from 'next-redux-wrapper'
+
 type RootState = ReturnType<typeof rootReducer>
 
 const persistConfig: PersistConfig<RootState> = {
@@ -46,7 +46,7 @@ type AppDispatch = typeof store.dispatch
 export type AppStore = ReturnType<typeof makeStore>
 export const store = makeStore()
 setupListeners(store.dispatch)
-export const wrapper = createWrapper<AppStore>(makeStore)
+
 export const persistor: Persistor = persistStore(store)
 
 export const useAppDispatch: () => AppDispatch = useDispatch

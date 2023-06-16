@@ -5,7 +5,7 @@ import { screen, waitFor } from '@testing-library/dom'
 
 const buffer = Buffer.from(dummyXML, 'base64')
 const decodedData = buffer.toString('utf-8')
-
+const id = dummyPodcast.collectionId.toString()
 describe('Details', () => {
   beforeEach(() => {
     fetchMock.resetMocks()
@@ -19,8 +19,8 @@ describe('Details', () => {
 
   it('Should display the podcast information', async () => {
     renderWithRedux(
-      <PodcastTemplate params={{ id: dummyPodcast.collectionId.toString() }}>
-        <PodcastDetails params={{ id: dummyPodcast.collectionId.toString() }} />
+      <PodcastTemplate params={{ id }}>
+        <PodcastDetails params={{ id }} />
       </PodcastTemplate>
     )
 
@@ -34,10 +34,10 @@ describe('Details', () => {
     expect(title).toBeInTheDocument()
   })
 
-  it('Should display a table with the episode list', async () => {
+  it('Should display a table with a list of episodes', async () => {
     renderWithRedux(
-      <PodcastTemplate params={{ id: dummyPodcast.collectionId.toString() }}>
-        <PodcastDetails params={{ id: dummyPodcast.collectionId.toString() }} />
+      <PodcastTemplate params={{ id }}>
+        <PodcastDetails params={{ id }} />
       </PodcastTemplate>
     )
 
